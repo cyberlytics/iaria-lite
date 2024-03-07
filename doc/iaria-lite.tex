@@ -1,0 +1,126 @@
+%%
+%% Copyright 2023 Christoph P. Neumann
+%%
+%% This LaTeX class provides a simple interface for creating
+%% a verfy fancy Curriculum Vitae. At the moment only CVs in
+%% the german language are supported.
+%%
+%% This file is free property; as a special exception the author
+%% gives unlimited permission to copy and/or distribute it, with
+%% or without modifications, as long as this notice is
+%% preserved.
+%%
+%% This file is distributed in the hope that it will be useful,
+%% but WITHOUT ANY WARRANTY, to the extent permitted by law;
+%% without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE.
+
+\documentclass{ltxdoc}
+
+\CodelineNumbered
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\GetFileInfo{iaria-lite.cls}
+
+\parskip1.0ex
+\parindent0.0ex
+
+\begin{document}
+\title{\textsf{iaria-lite}\\
+ An Unofficial IARIA LaTeX Class (Lite Version)}
+\author{Christoph P.\ Neumann \texttt{$<$cyberpetaneuron@web.de$>$}}
+\maketitle
+\PrintChanges
+
+\begin{abstract}
+The \texttt{iaria-lite}--class provides a convenient environment for writing IARIA scholary publications.
+(The lite version of the class file does not implement IARIA specifications for citation style,
+because this would require to make presumption about technological stacks like biblatex/biber).
+The \texttt{iaria-lite}--class should be compatible with with all latex distributions.
+\end{abstract}
+
+\section{Installation}
+
+The \texttt{zip} or \texttt{tar.gz} file comes with a \texttt{iaria-lite.ins}
+and a \texttt{iaria-lite.dtx} file included which contains the \LaTeX\ stuff.
+
+To extract the class files call:
+
+\begin{verbatim}
+  $ latex iaria-lite.ins
+\end{verbatim}
+
+This call will extract all \LaTeX\ specific files to the current
+directory. You can either use the files for a single
+cv project or you can integrate the files into your \TeX\ installation.
+
+If you just want to use \textsf{iaria-lite} for a single curriculum vitae
+project, the simplest way is just to copy the generated files to the
+folder of the project.
+
+If you want to integrate \textsf{iaria-lite} into  your \TeX\ installation,
+create a directory \texttt{tex/latex/iaria-lite} beneath your \TeX\ installation
+(e.g.~beneath \texttt{/usr/share/texmf}) and copy all files from the
+current directory there. Now call:
+
+\begin{verbatim}
+  $ mktexlsr
+\end{verbatim}
+
+to update the file--cache of \LaTeX.
+
+Hint: The \textsf{iaria-lite} distribution contains a sample docstrip configuration
+in \texttt{docstrip.cfg} via which files can be distributed
+automatically to their correct positions inside a \LaTeX\ installation.
+Feel free to adapt this file to your environment and afterwards call
+\texttt{latex iaria-lite.ins} to install the package to its right place.
+
+\section{Templates}
+
+For a quick start the \textsf{iaria-lite} distribution contains document
+templates.
+The templates can be found in the \texttt{iaria-lite-example-neumann.zip} file.
+
+\begin{verbatim}
+  $ make
+\end{verbatim}
+
+to build the pdf. The file \texttt{porttrait.eps} contains a dummy
+porttrait for the first page of the curriculum vitae.
+
+\section{Documentclass}
+
+\DescribeMacro{documentclass iaria-lite}
+This package provides the documentclass \texttt{iaria-lite}. The documentclass
+supports the following options:
+
+
+\begin{itemize}
+\item |conference| Passed to IEEEtran
+\item |a4paper|    Passed to IEEEtran
+\item |flushend|   Activate flushend package
+\item |pbalance|   Activate pbalance package
+\end{itemize}
+
+
+\section{Requirements}
+
+We instrument several other \LaTeX\ packages for different purposes,
+which must be available under your installation.
+
+\begin{itemize}
+\item IEEEtran
+\item extdash
+\item flushend
+\item graphicx
+\item hyperref
+\item orcidlink
+\item pbalance
+\item times
+\item url
+\item xcolor
+\item xpatch
+\end{itemize}
+
+\end{document}
