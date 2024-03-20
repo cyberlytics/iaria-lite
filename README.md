@@ -3,7 +3,7 @@
 
 This repository hosts the source code for the [CTAN](https://ctan.org/) package [IARIA-lite](https://ctan.org/pkg/iaria-lite).
 
-The package enhances a LaTeX installation with a LaTeX class for writing IARIA scholary publications.
+The IARIA-lite package enhances a LaTeX installation with a LaTeX class for writing IARIA scholary publications.
 The lite version of the class file does not implement IARIA specifications for citation style.
 However, the example file provide the necessary adjustments for biblatex/biber.
 The IARIA-lite package should be compatible with with all latex distributions (not only pdflatex but also XeLaTeX or LuaTeX, and not only biblatex/biber but also legacy bibtex or natbib).
@@ -56,7 +56,7 @@ All build artifacts can be found in `build`. The `Makefile` builds the following
 
 * `iaria-lite.ins` and `iaria-lite.dtx` which contains the LaTeX installation package and the documentation source.
 * `iaria-lite.pdf` the documentation of the class
-* `CV-template_*.pdf` PDF files of the iaria-lite template documents
+* `*-example-*.zip` include TEX+PDF example based on this class
 
 ## Build dependencies
 

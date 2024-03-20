@@ -92,7 +92,7 @@
   \typeout{iaria class: load pbalance package.}
   \RequirePackage{pbalance}
 \fi
-% Flushend, works with arxiv, but can have other issues
+% Flushend => works with arxiv, but major incampatibility with lineno (and, thus, also with mindflow et al.)
 \ifnum\value{iaria@flushendtracker}=1
   \typeout{iaria class: load flushend package.}
   \RequirePackage{flushend}

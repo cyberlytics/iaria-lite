@@ -3,30 +3,30 @@ AUTHORS = $(shell head -1 LICENSE |cut -d\  -f3-)
 SRC = $(notdir $(wildcard src/*))
 OBJ = build/obj/iaria-lite.ins build/obj/iaria-lite.dtx
 DOC_PDF = build/doc/iaria-lite.pdf
-TEMPLATE_PDFS = $(patsubst %.tex,build/doc/%.pdf,$(notdir $(wildcard static/iaria-lite-lite-example-neumann/*.tex)))
 LICENSE = build/dist/COPYING
 ARCHIVE = dist/iaria-lite.zip
-#LICENSE_TEXT = $(shell cat LICENSE)
-LICENSE_TEXT = LICENSEDUMMY
+LICENSE_TEXT = $(shell cat LICENSE)
 
 VPATH = src
 
-LATEX = latexmk -latexoption=-interaction=nonstopmode -latexoption=-halt-on-error -pdf
+#LATEXMK = latexmk -latexoption=-interaction=nonstopmode -latexoption=-halt-on-error -pdf
+LATEXMK = texliveonfly --compiler=latexmk --arguments='-shell-escape -pdf'
+
 MAKEDTX = build/tools/makedtx/makedtx.pl
 MAKEDTX_ARCHIVE = makedtx-1_2.zip
 
 default: compile
 
-compile: $(OBJ) $(DOC_PDF) $(TEMPLATE_PDFS)
+compile: $(OBJ) $(DOC_PDF)
 
 dist : $(ARCHIVE)
 
-$(ARCHIVE) : $(OBJ) $(DOC_PDF) $(TEMPLATE_PDFS) $(LICENSE)
+$(ARCHIVE) : $(OBJ) $(DOC_PDF) $(LICENSE)
 	mkdir -p build/dist
 	cp -r static/* build/dist
+	cd build/dist; unzip -o *.zip -d "template"
+	rm build/dist/*.zip
 	cp $(OBJ) $(DOC_PDF) build/dist
-	mkdir -p build/dist/template
-	cp $(TEMPLATE_PDFS) build/dist/template
 	mkdir -p dist
 	cd build/dist; zip -r ../../$@ *
 
@@ -52,17 +52,11 @@ $(OBJ) : $(SRC) $(MAKEDTX)
 	sed -e "$$(($$(wc -l < iaria-lite.ins)-1))r patch/msg.txt" iaria-lite.ins
 	mv $(notdir $(OBJ)) build/obj
 
-# Build iaria-lite-lite-example-neumann PDFs
-build/doc/%.pdf : static/iaria-lite-lite-example-neumann/%.tex
-	mkdir -p build/doc
-	cp $< static/iaria-lite-lite-example-neumann/Makefile static/iaria-lite-lite-example-neumann/*.cls build/doc
-	$(MAKE) -C build/doc $(notdir $@)
-
 # Build Documentation PDF from iaria-lite.dtx
 $(DOC_PDF) : build/obj/iaria-lite.dtx
 	mkdir -p build/doc
 	cp $< build/doc
-	cd build/doc; $(LATEX) iaria-lite.dtx
+	cd build/doc; $(LATEXMK) iaria-lite.dtx
 
 $(LICENSE) : LICENSE
 	mkdir -p build/dist
