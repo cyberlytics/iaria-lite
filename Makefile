@@ -3,7 +3,7 @@ AUTHORS = $(shell head -1 LICENSE |cut -d\  -f3-)
 SRC = $(notdir $(wildcard src/*))
 OBJ = build/obj/iaria-lite.ins build/obj/iaria-lite.dtx
 DOC_PDF = build/doc/iaria-lite.pdf
-LICENSE = build/dist/COPYING
+LICENSE = build/dist/iaria-lite/COPYING
 ARCHIVE = dist/iaria-lite.zip
 LICENSE_TEXT = $(shell cat LICENSE)
 
@@ -22,11 +22,15 @@ compile: $(OBJ) $(DOC_PDF)
 dist : $(ARCHIVE)
 
 $(ARCHIVE) : $(OBJ) $(DOC_PDF) $(LICENSE)
-	mkdir -p build/dist
-	cp -r static/* build/dist
-	cd build/dist; unzip -o *.zip -d "template"
-	rm build/dist/*.zip
-	cp $(OBJ) $(DOC_PDF) build/dist
+	mkdir -p build/dist/iaria-lite
+	cp -r static/* build/dist/iaria-lite
+	cd build/dist/iaria-lite; unzip -o *.zip -d "template"
+	rm build/dist/iaria-lite/*.zip
+	cp $(OBJ) $(DOC_PDF) build/dist/iaria-lite
+	chmod -R -x+X build/dist
+	echo "== check files: falsely marked as executable? =="
+	ls -l build/dist/iaria-lite/*
+	echo "== /check files =="
 	mkdir -p dist
 	cd build/dist; zip -r ../../$@ *
 
@@ -44,7 +48,7 @@ $(OBJ) : $(SRC) $(MAKEDTX)
 		-src "($(subst $() $(),|,$(SRC)))=>\1" \
 		-dir "src" \
 		-author "$(AUTHORS)" \
-		-date "2023-$(shell date +%Y)" \
+		-date "2024-$(shell date +%Y)" \
 		-setambles ".*=>\nopreamble" \
 		-doc "doc/iaria-lite.tex" \
 		-preamble "$(LICENSE_TEXT)" \
@@ -59,7 +63,7 @@ $(DOC_PDF) : build/obj/iaria-lite.dtx
 	cd build/doc; $(LATEXMK) iaria-lite.dtx
 
 $(LICENSE) : LICENSE
-	mkdir -p build/dist
+	mkdir -p build/dist/iaria-lite
 	cp $^ $@
 
 clean:
