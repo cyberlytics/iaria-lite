@@ -1,12 +1,13 @@
 
-# IARIA-lite - An unofficial IARIA LaTeX class (Lite version)
+# iaria-lite – Write documents for the IARIA publications
 
 This repository hosts the source code for the [CTAN](https://ctan.org/) package [IARIA-lite](https://ctan.org/pkg/iaria-lite).
 
-The IARIA-lite package enhances a LaTeX installation with a LaTeX class for writing IARIA scholary publications.
-The lite version of the class file does not implement IARIA specifications for citation style.
-However, the example file provide the necessary adjustments for biblatex/biber.
-The IARIA-lite package should be compatible with with all latex distributions (not only pdflatex but also XeLaTeX or LuaTeX, and not only biblatex/biber but also legacy bibtex or natbib).
+
+This package provides a convenient environment for writing IARIA (International Academy, Research, and Industry Association) scholary publications.
+
+It does not implement the specifications for the IARIA citation style, for which you have to use the iaria class.
+
 
 DISCLAIMER: If your are using biblatex/biber, it is recommended to use [CTAN](https://ctan.org/) package [IARIA](https://ctan.org/pkg/iaria).
 
