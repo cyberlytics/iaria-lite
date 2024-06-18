@@ -12,7 +12,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 % Provide the name of your document class, the date it was last updated, and a comment about what it's used for
-\ProvidesClass{iaria-lite}[2024/03/20 unofficial IARIA-lite conference template v0.1]
+\ProvidesClass{iaria-lite}[2024/05/04 unofficial IARIA-lite conference template v0.3]
 
 % Define marker counter for options (counter are global in latex):
 \newcounter{iaria@pbalancetracker}
@@ -65,6 +65,10 @@
 % Diferring from IEEE, IARIA requires a hyphen after "Keywords" instead of an  emdash:
 \xpatchcmd\IEEEkeywords{---}{-}{}{}
 
+% Diferring from IEEE, IARIA requires also the keywords in Italic (and Bold)(and lower case!):
+\let\oldIEEEkeywords\IEEEkeywords
+\def\IEEEkeywords{\oldIEEEkeywords\itshape\ignorespaces}
+
 \makeatletter
 \renewcommand{\IEEEauthorblockN}[1]{%
 % copied from IEEEtran.cls:
@@ -82,6 +86,19 @@
     #1%
     % end the row if the user did not already
     \crcr}
+\makeatother
+
+% IARIA subfigure captions require this:
+\RequirePackage[caption=false,font=footnotesize]{subfig}
+
+% IARIA requires to bring the table caption in the same line of "Table I"
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makecaption}
+  {\\}
+  {.\ }
+  {}
+  {}
 \makeatother
 
 % Balance/level columns at the last page / in bibliography

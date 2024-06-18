@@ -1,17 +1,21 @@
               -----------------------------
-              Version 0.1 of the iaria-lite class
+              Version 0.3 of the iaria-lite class
                   Christoph P. Neumann
               -----------------------------
 
-This LaTeX provides a simple environment for
-technical reports as scholary publication.
+This package contains templates for the creation of documents for
+IARIA publications (International Academy, Research, and Industry Association)
+and implements the specifications for the IARIA citation style.
 
-NEU = Neumann
-TR = Technical Report
+This class does not contain evil low-level TeX magic
+but instead uses many other fancy LaTeX packages
+that we hope you have already installed.
 
-As this class is created mainly for ourselves it does not
-contain evil low-level TeX magic but instead uses many other
-fancy LaTeX packages that we hope you have already installed.
+It does not implement the specifications for the IARIA citation style,
+for which you have to use the iaria class.
+
+DISCLAIMER: If your are using pdflatex/biblatex/biber,
+it is recommended to use CTAN package iaria.
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either version 1.3c
