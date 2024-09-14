@@ -12,13 +12,25 @@
 \NeedsTeXFormat{LaTeX2e}
 
 % Provide the name of your document class, the date it was last updated, and a comment about what it's used for
-\ProvidesClass{iaria-lite}[2024/05/04 unofficial IARIA-lite conference template v0.3]
+\ProvidesClass{iaria-lite}[2024/09/16 unofficial IARIA-lite conference template v0.4]
 
 % Define marker counter for options (counter are global in latex):
+\newcounter{iaria@subfigtracker}
+\newcounter{iaria@subcaptiontracker}
 \newcounter{iaria@pbalancetracker}
 \newcounter{iaria@flushendtracker}
 
 % Declare options:
+
+\DeclareOption{subfig}{
+  \setcounter{iaria@subfigtracker}{1}
+  \typeout{iaria class: subfig option is set (use subfloat command).}
+}
+\DeclareOption{subcaption}{
+  \setcounter{iaria@subcaptiontracker}{1}
+  \typeout{iaria class: subcaption option is set (use subfigure command).}
+}
+
 \DeclareOption{onecolumn}{\OptionNotUsed} % IEEE option onecolumn will be ignored
 
 \DeclareOption{pbalance}{
@@ -88,9 +100,6 @@
     \crcr}
 \makeatother
 
-% IARIA subfigure captions require this:
-\RequirePackage[caption=false,font=footnotesize]{subfig}
-
 % IARIA requires to bring the table caption in the same line of "Table I"
 \usepackage{etoolbox}
 \makeatletter
@@ -100,6 +109,17 @@
   {}
   {}
 \makeatother
+
+% IARIA subfigure captions require parentheses and footnotesize:
+\ifnum\value{iaria@subfigtracker}=1
+  \typeout{iaria class: load subfig package (use subfloat command).}
+  \RequirePackage[caption=false,font=footnotesize]{subfig}
+\fi
+\ifnum\value{iaria@subcaptiontracker}=1
+  \typeout{iaria class: load subcaption package (use subfigure command).}
+  \RequirePackage{subcaption}
+  \captionsetup[subfigure]{labelformat=parens,font=footnotesize}
+\fi
 
 % Balance/level columns at the last page / in bibliography
 % DISCLAIMER: No solution is a 100%/perfect one!

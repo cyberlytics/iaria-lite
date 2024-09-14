@@ -1,5 +1,5 @@
 \PassOptionsToPackage{cmyk,table}{xcolor}
-\documentclass[conference]{iaria-lite}
+\documentclass[conference,flushend]{iaria-lite}
 \pdfoutput=1 % pdflatex hint for arxiv.org (within first 5 lines)
 
 % !TeX spellcheck = en-US
@@ -140,7 +140,8 @@
 \hyphenation{block-chain block-chains Ethe-re-um}
 
 % Capitalization: https://capitalizemytitle.com/style/Chicago/
-\title{The Unofficial \textsmaller{IARIA}-lite \LaTeX{} Class Paper Example (v2024-05)}
+%\title{The Unofficial \textsmaller{IARIA}-lite \LaTeX{} Class Paper Example (v2024-09)}
+\title{The \textsmaller{IARIA}-lite \LaTeX{} Class: Compatible With All \LaTeX{} Distributions,\\but without \textsmaller{IARIA} specifications for citation style (v2024-09)}
 
 \author{
     \IEEEauthorblockN{Christoph P.\ Neumann\,\orcidlink{0000-0002-5936-631X}}
@@ -160,7 +161,7 @@
 \maketitle
 
 \begin{abstract}
-    \lipsum[1][3-12]
+    \lipsum[11]
 \end{abstract}
 
 % A list of IEEE Computer Society appoved keywords can be obtained at
@@ -177,66 +178,67 @@ The \textsmaller{IARIA} formatting rules \cite{iaria2014formattingrules} are ado
 In addition, be aware of the supplementary \textsmaller{IARIA} editorial rules \cite{iaria2009editorialrules} \faWarning{} that provide a beginner-friendly set of further advices.
 It is recommended to use a grammar tool, e.\,g., the LanguageTool \cite{languagetool} browser plugin in combination with Overleaf \cite{overleaf}.
 
-\lipsum[2]
+\lipsum[12]
 
 \{\faWarning{} \textsmaller{IARIA} editorial rules: Introduction must end with a paragraph describing the structure of the paper!\}
 The remainder of the paper is organized as follows: In Section~II, …
 
 \section{Related work \textbar{} Methods}
-\lipsum[3]
+\lipsum[13]
 
 \section{Results}
-\lipsum[4]
+\lipsum[14]
 
 \section{Discussion \textbar{} Evalution}
-\lipsum[5]
+\lipsum[15]
 
 \section{Conclusion and Future Work}
 \{\faWarning{} \textsmaller{IARIA} editorial rules: Last section must be \textquote{Conclusion and Future Work}!\}
-\lipsum[6]
+\lipsum[16]
 
-
-
-%%% Advisor
-\nocite{StNe23foodfresh}
-
-%%% First-Author
+%%% CPN Peer-Rev'd
+\nocite{LeNe24vocattllm} % Co
+\nocite{PANP23seccloudfogai} % Co
+\nocite{StNe23foodfresh} % Advisor
 \nocite{NeLe13adhocCoop}
 \nocite{Neumann2012lni}
 \nocite{NeLe12alphaFlow}
 \nocite{NeHL12hydra}
 \nocite{NeWL12offsync}
+\nocite{WaNe12alphaoffsync} % Co
 \nocite{NSWL11alphaadaptive}
+\nocite{ToNe11alphaprops} % Co
+\nocite{JBN+10fcmdb} % Co
+\nocite{FDI+10esmmog} % Co
 \nocite{NeFL10oxdbs}
 \nocite{NeLe10alphaUC}
+\nocite{ILN+09semrttx} % Co
+\nocite{NHSL09oxdbs} % DE
 \nocite{NeLe09alphaflow}
 \nocite{NeLe09dmps}
-\nocite{NHSL09oxdbs} % DE
 \nocite{NeWL09xdsrig} % DE
 \nocite{NRDL09deus}
+\nocite{IND+09lzatav} % Co (DE)
+\nocite{MeNe04testejb} % Pseudo-Co
 
-%%% Co-Authorship
-\nocite{LeNe24vocattllm}
-\nocite{PANP23seccloudfogai}
-\nocite{WaNe12alphaoffsync}
-\nocite{ToNe11alphaprops}
-\nocite{FDI+10esmmog}
-\nocite{JBN+10fcmdb}
-\nocite{ILN+09semrttx}
-\nocite{IND+09lzatav} % DE
-\nocite{MeNe04testejb}
-
-%%% Monographic Work
+%%% CPN Monographic Work
 \nocite{Neumann2013dissBook}
 \nocite{Neumann2012dissPreprint}
 \nocite{neumann2005da}
 \nocite{neumann2004sa}
 
 %%% TechRep / Non-Peer-Reviewed
-
-\nocite{StNe24kosmosis-TR}
+\nocite{ModA-TR-2024SS-CCT-TeamGruen-CloudDice}
+\nocite{ModA-TR-2024SS-BCN-TeamCyan-SkillIssue}
+\nocite{ModA-TR-2024SS-BCN-TeamGelb-GoalGuru}
+\nocite{ModA-TR-2024SS-BCN-TeamWeiss-InfluenzaConnect}
+\nocite{ModA-TR-2024SS-BCN-TeamGruen-NanoVend}
+\nocite{ModA-TR-2024SS-BCN-TeamRot-StockSentinel}
+\nocite{ModA-TR-2024SS-WAE-TeamCyan-Connect4IfYouCan}
+\nocite{ModA-TR-2024SS-WAE-TeamWeiss-Geodingens}
+\nocite{ModA-TR-2024SS-WAE-TeamGruen-MunchMunch}
 \nocite{SaNe24othfb}
-
+\nocite{StNe24kosmosis-TR}
 \nocite{ModA-TR-2023SS-WAE-TeamWeiss-Neunerln}
 \nocite{ModA-TR-2023SS-BDCC-TeamRot-CompVisPipeline}
 \nocite{ModA-TR-2023SS-BDCC-TeamBlau-NauticalNonsense}
@@ -254,7 +256,6 @@ The remainder of the paper is organized as follows: In Section~II, …
 \nocite{ModA-TR-2021SS-WAE-TeamWeiss-CovidDashboard}
 \nocite{ModA-TR-2021SS-WAE-TeamRot-FireForceDefense}
 \nocite{ModA-TR-2021SS-WAE-TeamGruen-MedPlanner}
-
 \nocite{NeRL12deus}
 \nocite{LNR+11egr}
 
