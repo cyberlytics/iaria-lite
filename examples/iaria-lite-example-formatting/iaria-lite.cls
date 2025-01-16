@@ -1,4 +1,4 @@
-%# Copyright (c) 2023-2024 Christoph P. Neumann
+%# Copyright (c) 2023-2025 Christoph P. Neumann
 
 % DISCLAIMER:
 % I had to decide whether to hardcode required usage of IEEEtran "conference"
@@ -12,7 +12,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{iaria-lite}[2024/10/24 unofficial IARIA-lite conference template v0.5]
+\ProvidesClass{iaria-lite}[2025/01/16 unofficial IARIA-lite conference template v0.6]
 
 % Define marker counter for options (counter are global in latex):
 \newcounter{iaria@subfigtracker}
@@ -109,6 +109,13 @@
   {}
 \makeatother
 
+% using caption package does provide compatibility with babel package that intervenes in the tablename
+\RequirePackage{caption}
+% IARIA requires table caption to be (top-positioned) centered with upper case label and small caps 
+\captionsetup[table]{name=TABLE,labelsep=period,justification=centering,textfont={footnotesize, sc},labelfont=footnotesize}
+% IARIA requires figure caption to be (bottom-positioned) centered 
+\captionsetup[figure]{font={footnotesize,rm},justification=centering,labelsep=period}
+
 % IARIA subfigure captions require parentheses and footnotesize:
 \ifnum\value{iaria@subfigtracker}=1
   \typeout{iaria class: load subfig package (use subfloat command).}
@@ -117,6 +124,7 @@
 \ifnum\value{iaria@subcaptiontracker}=1
   \typeout{iaria class: load subcaption package (use subfigure command).}
   \RequirePackage{subcaption}
+  % IARIA requires subfigure caption to number them with parentheses around latin chars (like "(a)" and "(b)")
   \captionsetup[subfigure]{labelformat=parens,font=footnotesize}
 \fi
 

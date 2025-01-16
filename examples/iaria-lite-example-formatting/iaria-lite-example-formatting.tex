@@ -14,13 +14,9 @@
 % en-US  = [english]/[american]/[USenglish] <DEFAULT>
 \usepackage[babel=true,english=american]{csquotes}
 \usepackage[english]{babel} % en-US
-% IARIA requires uppercase TABLE, and babel intervenes in the tablename
-\addto\captionsenglish{\renewcommand\tablename{TABLE}}
 % en-UK  =           [british] /[UKenglish] <OXFORD>
 %\usepackage[babel=true,english=british]{csquotes}
 %\usepackage[british]{babel} % en-UK
-%% IARIA requires uppercase TABLE, and babel intervenes in the tablename
-%\addto\captionsbritish{\renewcommand\tablename{TABLE}}
 
 % Diferring from IEEE, IARIA requires 
 % in bibliography: 6+ authors as first author et al.
@@ -33,6 +29,9 @@
 \makeatletter
 \let\blx@rerun@biber\relax
 \makeatother
+
+% When using multiple citation keys in the same \cite command, change "[1], [5], [7]" to IARIA-required "[1][5][7]":
+\renewcommand*{\multicitedelim}{}
 
 % Diferring fro IEEE, IARIA requires the bibliography in 9 point font
 % (Command \bibfont depends on biblatex)

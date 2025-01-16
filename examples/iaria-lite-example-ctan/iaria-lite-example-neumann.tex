@@ -34,6 +34,9 @@
 \let\blx@rerun@biber\relax
 \makeatother
 
+% When using multiple citation keys in the same \cite command, change "[1], [5], [7]" to IARIA-required "[1][5][7]":
+\renewcommand*{\multicitedelim}{}
+
 % Diferring fro IEEE, IARIA requires the bibliography in 9 point font
 % (Command \bibfont depends on biblatex)
 \renewcommand*{\bibfont}{\small}
@@ -141,7 +144,9 @@
 
 % Capitalization: https://capitalizemytitle.com/style/Chicago/
 %\title{The Unofficial \textsmaller{IARIA}-lite \LaTeX{} Class Paper Example (v2024-09)}
-\title{The \textsmaller{IARIA}-lite \LaTeX{} Class: Compatible With All \LaTeX{} Distributions,\\but without \textsmaller{IARIA} specifications for citation style}
+\title{The \textsmaller{IARIA}-lite  Example of its \textsmaller{CTAN} Package and \LaTeX{} Class}
+
+\IEEEspecialpapernotice{Compatible With All \LaTeX{} Distributions, but Without \textsmaller{IARIA} Specifications for Citation Style}
 
 \author{
     \IEEEauthorblockN{Christoph P.\ Neumann\,\orcidlink{0000-0002-5936-631X}}
@@ -207,6 +212,23 @@ The remainder of the paper is organized as follows: In Section~II, …
 \lipsum[16]
 
 \{\,\faWarning{} For beginners: you must not leave the bibliography blank. Add appropriate references to your related work.\}
+%
+%\vspace{\baselineskip}
+A selection of previous  \textsmaller{IARIA} publications of the CyberLytics lab
+%
+%
+%% INSTRUCTION: Remove the irrelevant ones and cite
+%% the ones that are actually related on technological
+%% level or that address the same domain.
+%% This listing is just as a stimulus:
+\cite{%
+LeNe24goalHijackingLLMs,%
+LeNe24vocattllm,%
+PANP23seccloudfogai,%
+StNe23foodfresh}
+%
+%
+are included as reference and further example.
 
 % ======== References =========
 \begingroup
