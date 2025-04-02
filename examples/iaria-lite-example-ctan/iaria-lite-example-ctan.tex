@@ -2,6 +2,12 @@
 \documentclass[conference,flushend]{iaria-lite}
 \pdfoutput=1 % pdflatex hint for arxiv.org (within first 5 lines)
 
+% BEWARE: iaria-lice.cls requires NO specific TeX stack!
+% However, the following additionally necessary settings
+% (i.e, inputenc/fontenc and bibliography)
+% are exemplary configured based on the following stack.
+% Other stacks must adopt accordingly, by their own means.
+
 % !TeX spellcheck = en-US
 % LTeX: language=en-US
 % !TeX encoding = utf8
@@ -14,8 +20,8 @@
 % en-US  = [english]/[american]/[USenglish] <DEFAULT>
 \usepackage[babel=true,english=american]{csquotes}
 \usepackage[english]{babel} % en-US
-% IARIA requires uppercase TABLE, and babel intervenes in the tablename
-\addto\captionsenglish{\renewcommand\tablename{TABLE}}
+%% IARIA requires uppercase TABLE, and babel intervenes in the tablename
+%\addto\captionsenglish{\renewcommand\tablename{TABLE}}
 % en-UK  =           [british] /[UKenglish] <OXFORD>
 %\usepackage[babel=true,english=british]{csquotes}
 %\usepackage[british]{babel} % en-UK
@@ -25,7 +31,18 @@
 % Diferring from IEEE, IARIA requires 
 % in bibliography: 6+ authors as first author et al.
 % in \citeauthor: any case of et al. with just first author et al.
-\usepackage[defernumbers=true,style=ieee, backend=biber, url=false, hyperref, maxnames=5, minnames=1, maxcitenames=2, mincitenames=1]{biblatex}
+\usepackage[
+  defernumbers=true,
+  style=ieee,
+  citestyle=ieee-comp, % this activates cite compression
+  backend=biber,
+  url=false,
+  hyperref,
+  maxnames=5,
+  minnames=1,
+  maxcitenames=2,
+  mincitenames=1
+]{biblatex}
 
 % Due to applied option defernumbers=true:
 % Prevent citations in the references are being numbered as '0' in ArXiv
@@ -99,42 +116,49 @@
     author = {Michael Shell},
     title = {How to Use the {IEEEtran} \LaTeX\ Class},
     url = {http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf},
-    year = {2015}
+    year = {2015},
+    urldate = {2025-03-10}
 }
 @online{ieee2018formattingrules,
     author = {{IEEE}},
     title = {Conference Template and Formatting Specifications},
     url = {https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/Conference-template-A4.doc},
-    year = {2018}
+    year = {2018},
+    urldate={2025-03-10}
 }
 @online{iaria2014formattingrules,
     author = {{IARIA}},
     title = {Formatting Rules},
     url = {http://www.iaria.org/formatting.doc},
-    year = {2014}
+    year = {2014},
+    urldate={2025-03-10}
 }
 @online{iaria2009editorialrules,
     _author = {Cosmin Dini},
     author = {{IARIA}},
     title = {Editorial Rules},
     url = {https://www.iaria.org/editorialrules.html},
-    year = {2009}
+    year = {2009},
+    urldate={2025-03-10}
 }
 @online{languagetool,
     author = {{LanguageTooler GmbH}},
     title  = {{LangueTool}},
-    url    = {https://languagetool.org/overleaf}
+    url    = {https://languagetool.org/overleaf},
+    urldate={2025-03-10}
 }
 @online{overleaf,
     author = {{Digital Science UK Limited}},
     title  = {{Overleaf}},
-    url    = {https://www.overleaf.com}
+    url    = {https://www.overleaf.com},
+    urldate={2025-03-10}
 }
 \end{filecontents}
 
 \usepackage{fontawesome} % i.a., \faWarning{}
 \usepackage{relsize}     % i.a., \textsmaller{...}
 \usepackage{lipsum}      % for blindtext
+%\usepackage{xurl}       % allow URL breaks at any alphanumerical character (can help with some bibliographies)
 
 % ======================================================================
 
@@ -144,9 +168,9 @@
 
 % Capitalization: https://capitalizemytitle.com/style/Chicago/
 %\title{The Unofficial \textsmaller{IARIA}-lite \LaTeX{} Class Paper Example (v2024-09)}
-\title{The \textsmaller{IARIA}-lite  Example of its \textsmaller{CTAN} Package and \LaTeX{} Class}
+\title{The \textsmaller{IARIA}-lite Formatting Example of its \textsmaller{CTAN} Package and LaTeX Class}
 
-\IEEEspecialpapernotice{Compatible With All \LaTeX{} Distributions, but Without \textsmaller{IARIA} Specifications for Citation Style}
+\IEEEspecialpapernotice{Compatible With All LaTeX Distributions, but Without \textsmaller{IARIA} Specifications for Citation Style}
 
 \author{
     \IEEEauthorblockN{Christoph P.\ Neumann\,\orcidlink{0000-0002-5936-631X}}
@@ -166,17 +190,12 @@
 \maketitle
 
 \begin{abstract}
-This paper demonstrates an example of a paper, based on the \texttt{iaria-lite} \LaTeX{} class.
-The \texttt{iaria-lite} class is compatible with all \LaTeX{} distributions, in contrast to \texttt{iaria} class. To achieve this compatibility, the lite variant dispenses with implementing the \textsmaller{IARIA} specifications for citation style.
-However, this example paper includes the necessary citation style adoptions for a pdflatex/biblatex/biber technology stack in its source code, you need to adopt them for any other \LaTeX{} distributions.
+This paper demonstrates an example of a paper, based on the \texttt{iaria-lite} LaTeX class.
+The \texttt{iaria-lite} class is compatible with all LaTeX distributions, in contrast to \texttt{iaria} class. To achieve this compatibility, the lite variant dispenses with implementing the \textsmaller{IARIA} specifications for citation style.
+However, this example paper includes the necessary citation style adoptions for a pdflatex/biblatex/biber technology stack in its source code, you need to adopt them for any other LaTeX distributions.
 The example is intended for beginners, e.\,g., undergraduate students.
 It contains a basic outline template and usually fills it with dummy text.
 Graphic exclamation marks highlight important remarks.
-%
-\{\,\faWarning{} For beginners:
-Do NOT remove the abstract, this section is mandatory.
-Do NOT use special characters, symbols, or math in your title or abstract.
-Do NOT use cites in your abstract.\}
 \end{abstract}
 
 % A list of IEEE Computer Society appoved keywords can be obtained at
@@ -184,6 +203,11 @@ Do NOT use cites in your abstract.\}
 \begin{IEEEkeywords}
     template; lorem ipsum.
 \end{IEEEkeywords}
+
+\{\,\faWarning{} For beginners:
+Do NOT remove the abstract, this section is mandatory.
+Do NOT use special characters, symbols, or math in your title or abstract.
+Do NOT use cites in your abstract.\}
 
 \section{Introduction}
 
@@ -222,18 +246,16 @@ A selection of previous  \textsmaller{IARIA} publications of the CyberLytics lab
 %% level or that address the same domain.
 %% This listing is just as a stimulus:
 \cite{%
+StNe25kosmosisGraphConstruction,%
 LeNe24goalHijackingLLMs,%
 LeNe24vocattllm,%
 PANP23seccloudfogai,%
 StNe23foodfresh}
 %
 %
-are included as reference and further example.
+is included as reference and further example.
 
 % ======== References =========
-\begingroup
-\sloppy
 \printbibliography
-\endgroup 
 
 \end{document}

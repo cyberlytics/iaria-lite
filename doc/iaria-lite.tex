@@ -13,7 +13,7 @@
 \title{\textsf{iaria-lite}\\
  An Unofficial IARIA LaTeX Class (Lite Version)}
 \author{Christoph P.\ Neumann \texttt{$<$cyberpetaneuron@gmail.com$>$}}
-\date{Version 0.6}
+\date{Version 0.7}
 \maketitle
 \PrintChanges
 
@@ -64,14 +64,23 @@ Feel free to adapt this file to your environment and afterwards call
 
 For a quick start the \textsf{iaria-lite} distribution contains document
 templates.
-The templates can be found in the \texttt{iaria-lite-example-neumann.zip} file.
+The templates can be found in the \texttt{iaria-lite-example-ctan.zip} file.
 
-\begin{verbatim}
-  $ make
-\end{verbatim}
+Especially beginners should NOT start from scatch! Use the example file!
+The iaria-lite package assumes that the LaTeX user has former experience with IEEEtran!
+For example, the formatting of the author block is not documented here, please refer to the IEEEtran documentantion.
+For shared affiliations, there is a formatting option called ``alternate long format'', which you can find in the well-known IEEEtran\_HOWTO.pdf;
+it is also the superior option for IARIA papers with shared affiliations.
 
-to build the pdf. The file \texttt{porttrait.eps} contains a dummy
-porttrait for the first page of the curriculum vitae.
+BEWARE: If you are completely new to LaTeX, then do NOT use iaria-lite class for your first LaTeX experiment, but please use the IARIA Word template.
+The same advice is true when you have no former IEEEtran experience and when you are not willing to acquire IEEEtran knowledge on your own.
+
+DISCLAIMER: Using this package still requires that you additionally MUST read the
+IARIA formatting guide (www.iaria.org/formatting.doc)
+as well as the IARIA editorial rules (www.iaria.org/editorialrules.html).
+Simply using this package does not relieve you of your responsibility!
+This applies to all aspects: IARIA style and LaTeX/BibTeX know how (like interfering packages) as well as IEEEtran implications (like conference mode, author block, shared affiliation, or cite compression).
+In case of doubt, you are required to understand the content of the iaria-lite.cls file, because before this this community-provided you had to make all these adjustments yourself.
 
 \section{Documentclass}
 
@@ -80,13 +89,16 @@ This package provides the documentclass \texttt{iaria-lite}. The documentclass
 supports the following options:
 
 \begin{itemize}
-\item |conference| Passed to IEEEtran
+\item |conference| Passed to IEEEtran (i.\,a., it suppresses page numbers)
 \item |a4paper|    Passed to IEEEtran
 \item |subfig|     Loads subfig package with IARIA style settings
 \item |subcaption| Loads subcaption package with IARIA style settings
 \item |flushend|   Activate flushend package (compatible with arXiv build process)
 \item |pbalance|   Activate pbalance package (incompatible with arXiv build process)
 \end{itemize}
+
+BEWARE: Usually, you will/must provide IEEEtran option ``conference'' to the iaria package, both for IARIA conferences AND for IARIA journals! Because for IARIA, the formatting rules are the same for conferences and journals -- in contrast to IEEE. Its conference style is the base for IARIA formatting.
+The example file (see above) prominently applies this option.
 
 A Remark about two-column document balancing on the last page:
 The flushend package is recommended, because it works within the arXiv automated build process.
@@ -108,6 +120,11 @@ However, they are not compatible with each other and we can either load one or t
 Both require dedicated style settings to be compatible with IARIA formatting rules.
 Thus, the document class provides options to load them for you with correct settings.
 
+In order, to configure table/figure captions correctly for IARIA requirements, the package caption is used.
+There would be other options to achieve this, however, the babel package is disruptive to the table label -- using package caption provides stability to the label configuration against babel intervention.
+There are minor downsides of using caption package:
+it results in a warning about unknown document class that cannot be suppressed, and if you do not use any tables or figures, caption package also results in a warning about ``unused captionsetup'' that cannot be suppressed, either.
+
 \section{Requirements}
 
 We instrument several other \LaTeX\ packages for different purposes,
@@ -116,6 +133,7 @@ which must be available under your installation.
 \begin{itemize}
 \item IEEEtran
 \item extdash
+\item floatrow
 \item flushend
 \item graphicx
 \item hyperref

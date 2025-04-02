@@ -12,7 +12,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{iaria-lite}[2025/01/16 unofficial IARIA-lite conference template v0.6]
+\ProvidesClass{iaria-lite}[2025/03/30 IARIA-lite template v0.7]
 
 % Define marker counter for options (counter are global in latex):
 \newcounter{iaria@subfigtracker}
@@ -99,7 +99,8 @@
     \crcr}
 \makeatother
 
-% IARIA requires to bring the table caption in the same line of "Table I"
+% IARIA requires to bring the table caption
+% in the same line as label "TABLE I"
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd{\@makecaption}
@@ -109,12 +110,37 @@
   {}
 \makeatother
 
-% using caption package does provide compatibility with babel package that intervenes in the tablename
+% caption is compatible with babel that intervenes with tablename
 \RequirePackage{caption}
-% IARIA requires table caption to be (top-positioned) centered with upper case label and small caps 
-\captionsetup[table]{name=TABLE,labelsep=period,justification=centering,textfont={footnotesize, sc},labelfont=footnotesize}
-% IARIA requires figure caption to be (bottom-positioned) centered 
-\captionsetup[figure]{font={footnotesize,rm},justification=centering,labelsep=period}
+% IARIA requires table caption to be
+% above, centered, with upper case label ('TABLE'), and small caps text.
+% (note that the caption package is only controlling the look & feel of the captions,
+%  it does not control the placement of the captions.)
+\captionsetup[table]{
+  style=base,
+  name=TABLE,
+  position=auto, % position option is NOT about forcing the label above/below, but ONLY about spacing!
+  justification=centering,
+  labelsep=period,
+  textfont={footnotesize, sc},
+  labelfont=footnotesize}
+% IARIA requires figure caption to be
+% below and centered 
+\captionsetup[figure]{
+  style=base,
+  position=auto, % position option is NOT about forcing the label above/below, but ONLY about spacing!
+  justification=centering,
+  labelsep=period,
+  font={footnotesize,rm}}
+% For controlling the placement of the captions
+% (table: top | figure: bottom), the package caption
+% recommends to use package floatrow:
+% (Without foatrom, the positioning is determined by
+%  the textual (!) position of command \label in relation to
+%  includegraphics/begin-tabular; a well-known latex aspect.)
+\RequirePackage{floatrow}
+\floatsetup[table]{capposition=top,captionskip=5pt}
+\floatsetup[figure]{capposition=bottom,captionskip=8pt}
 
 % IARIA subfigure captions require parentheses and footnotesize:
 \ifnum\value{iaria@subfigtracker}=1
@@ -124,7 +150,8 @@
 \ifnum\value{iaria@subcaptiontracker}=1
   \typeout{iaria class: load subcaption package (use subfigure command).}
   \RequirePackage{subcaption}
-  % IARIA requires subfigure caption to number them with parentheses around latin chars (like "(a)" and "(b)")
+  % IARIA requires subfigure caption to number them with
+  % parentheses around latin chars (like "(a)" and "(b)")
   \captionsetup[subfigure]{labelformat=parens,font=footnotesize}
 \fi
 
@@ -142,6 +169,17 @@
   \typeout{iaria class: load flushend package.}
   \RequirePackage{flushend}
 \fi
+
+% ========================================================
+% Packages with recommendation to load them last:
+
+% Allows to hyphenate a word that contains a dash:
+% https://stackoverflow.com/questions/2193307
+% /how-do-i-get-latex-to-hyphenate-a-word-that-contains-a-dash
+% Use \-/ for a breakable dash that does not prevent the
+% remainer of the word to be hyphenated.
+\RequirePackage[shortcuts]{extdash}
+% ========================================================
 
 % Finally, we'll use \endinput to indicate that LaTeX can stop
 % reading this file. LaTeX will ignore anything after this line.

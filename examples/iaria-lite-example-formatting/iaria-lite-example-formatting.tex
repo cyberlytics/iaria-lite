@@ -2,6 +2,12 @@
 \documentclass[conference,flushend]{iaria-lite}
 \pdfoutput=1 % pdflatex hint for arxiv.org (within first 5 lines)
 
+% BEWARE: iaria-lice.cls requires NO specific TeX stack!
+% However, the following additionally necessary settings
+% (i.e, inputenc/fontenc and bibliography)
+% are exemplary configured based on the following stack.
+% Other stacks must adopt accordingly, by their own means.
+
 % !TeX spellcheck = en-US
 % LTeX: language=en-US
 % !TeX encoding = utf8
@@ -21,7 +27,18 @@
 % Diferring from IEEE, IARIA requires 
 % in bibliography: 6+ authors as first author et al.
 % in \citeauthor: any case of et al. with just first author et al.
-\usepackage[defernumbers=true,style=ieee, backend=biber, url=false, hyperref, maxnames=5, minnames=1, maxcitenames=2, mincitenames=1]{biblatex}
+\usepackage[
+  defernumbers=true,
+  style=ieee,
+  citestyle=ieee-comp, % this activates cite compression
+  backend=biber,
+  url=false,
+  hyperref,
+  maxnames=5,
+  minnames=1,
+  maxcitenames=2,
+  mincitenames=1
+]{biblatex}
 
 % Due to applied option defernumbers=true:
 % Prevent citations in the references are being numbered as '0' in ArXiv
@@ -91,32 +108,49 @@
 
 \usepackage{fontawesome} % i.a., \faWarning{}
 \usepackage{relsize}     % i.a., \textsmaller{...}
+\usepackage{xurl}        % allow URL breaks at any alphanumerical character
 
 \begin{filecontents}[overwrite]{embedded.bib}
 @online{ieee2015howto,
     author = {Michael Shell},
     title = {How to Use the {IEEEtran} \LaTeX\ Class},
     url = {http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf},
-    year = {2015}
+    year = {2015},
+    urldate = {2025-03-10}
 }
 @online{ieee2018formattingrules,
     author = {{IEEE}},
     title = {Conference Template and Formatting Specifications},
     url = {https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/Conference-template-A4.doc},
-    year = {2018}
+    year = {2018},
+    urldate={2025-03-10}
 }
 @online{iaria2014formattingrules,
     author = {{IARIA}},
     title = {Formatting Rules},
     url = {http://www.iaria.org/formatting.doc},
-    year = {2014}
+    year = {2014},
+    urldate={2025-03-10}
 }
 @online{iaria2009editorialrules,
     _author = {Cosmin Dini},
     author = {{IARIA}},
     title = {Editorial Rules},
     url = {https://www.iaria.org/editorialrules.html},
-    year = {2009}
+    year = {2009},
+    urldate={2025-03-10}
+}
+@online{languagetool,
+    author = {{LanguageTooler GmbH}},
+    title  = {{LangueTool}},
+    url    = {https://languagetool.org/overleaf},
+    urldate={2025-03-10}
+}
+@online{overleaf,
+    author = {{Digital Science UK Limited}},
+    title  = {{Overleaf}},
+    url    = {https://www.overleaf.com},
+    urldate={2025-03-10}
 }
 @article{eason1955certain,
     title={On certain integrals of Lipschitz-Hankel type involving products of {Bessel} functions},
@@ -401,9 +435,10 @@ For papers published in translation journals, please give the English citation f
 % ======== References =========
 \vfill % To end last page and thus get bibliography "behind" subfigure example, only this allows pbalance to level columns at the last page correctly (but no other balance-package can handle this situation better than pbalance, either). % However, pbalance ist not compatible with arxiv.
 \begingroup
-\sloppy
+%\sloppy
 \printbibliography
-\endgroup 
+%\fussy
+\endgroup
 
 \end{document}
 

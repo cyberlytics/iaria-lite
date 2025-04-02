@@ -1,11 +1,17 @@
               -----------------------------
-              Version 0.6 of the iaria-lite class
+              Version 0.7 of the iaria-lite class
                   Christoph P. Neumann
               -----------------------------
 
 This package contains templates for the creation of documents for
 IARIA publications (International Academy, Research, and Industry Association)
 and implements the specifications for the IARIA citation style.
+
+Using this package still requires that you MUST read the
+IARIA formatting guide and IARIA editorial rules:
+  https://www.iaria.org/format.html
+  https://www.iaria.org/formatting.doc
+  https://www.iaria.org/editorialrules.html
 
 This class does not contain evil low-level TeX magic
 but instead uses many other fancy LaTeX packages
@@ -16,6 +22,10 @@ for which you have to use the iaria class.
 
 DISCLAIMER: If your are using pdflatex/biblatex/biber,
 it is recommended to use CTAN package iaria.
+
+The IARIA style is based on IEEE style, thus, iaria-lite package ist based on IEEEtran class.
+Beginners MUST read IEEEtran_HOWTO, to understand some of the more intricate aspects, like author block, shared affiliation, optional cite compression, etc.
+  http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either version 1.3c
